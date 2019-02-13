@@ -15,7 +15,9 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
 * The length of the shortest route (in terms of distance to travel) from B to B.
 * The number of different routes from C to C with a distance of less than 30.  In the sample data, the trips are: CDC, CEBC, CEBCDC, CDCEBC, CDEBC, CEBCEBC, CEBCEBCEBC.
 ---
+
 ##Getting started 快速使用
+
 ###API 接口说明
 ---
  接口所在包 com.thoughtworks.graphx.trains
@@ -31,7 +33,9 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
             TrainsAPI trainsAPI = new TrainsImpl();
             String[] in = {"A", "B", "C"};
             String distance = trainsAPI.getDistance(in);
+            
 * 2  TrainsAPI.getTripsLessInStops(String startVertex, String endVertex, int maxStops);
+
     计算两个地点之间（不超过n站路）的全部路径
     1. The number of trips starting at C and ending at C with a maximum of 3 stops.
        
@@ -39,12 +43,14 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
             String number = trainsAPI.getTripsLessInStops("C", "C", 3);
              
 * 3 TrainsAPI.getTripsInExactlyStops(String startVertex, String endVertex, int exactlyStops);
+
     计算两个地点之间（n站路）的全部路径
     1. The number of trips starting at A and ending at C with exactly 4 stops.
     
             TrainsAPI trainsAPI = new TrainsImpl();
             String number = trainsAPI.getTripsInExactlyStops("A", "C", 4);
 * 4 TrainsAPI.getShortestDistance(String startVertex, String endVertex, int maxDistance);
+
     计算两个地点之间的最短距离（Dijkstra算法）
     1. The length of the shortest route (in terms of distance to travel) from A to C.
     2. The length of the shortest route (in terms of distance to travel) from B to B.
@@ -52,6 +58,7 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
             TrainsAPI trainsAPI = new TrainsImpl();
             String length = trainsAPI.getShortestDistance("A", "C");
 * 5 TrainsAPI.getTripsLessInDistance(String startVertex, String endVertex, int maxDistance);
+
     计算两个地点之间（不超过最大距离）的全部路径
       1. The number of different routes from C to C with a distance of less than 30.
       
@@ -61,16 +68,23 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
 ###Test 测试说明
 ---
 * MainTest
+
     整体问题测试类:用以测试Trains Goals全部问题
     input: 
     Graph: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7
     List: {"A", "B", "C"}{"A", "D"}{"A", "D", "C"}{"A", "E", "B" , "C" ,"D"{"A", "E", "D"}{"C", "C", "3"}{"A", "C", "4"}"A", "C"}{"B", "B"}{"C", "C" ,"30"})
     output:[9, 5, 13, 22, NO SUCH ROUTE, 2, 3, 9, 9, 7]
+    
 * com.thoughtworks.graphx.trains.TrainsAPITest
+
     接口测试包:测试全部接口的的结果
+    
 * com.thoughtworks.graphx.trains.GraphLoaderTest
+
     图装载测试类:通过此测试类测试图装载过程
+    
 * com.thoughtworks.graphx.util.SerializeUtilTest
+
     图序列化反序列化测试类:通过此类测试Graph的序列化与反序列化
     
 ## 工程说明
@@ -84,6 +98,7 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
         使用切面，通过对加载方法的增强，构建一个完整的图；
         对已构建的图进行java序列化，持久到磁盘，再次使用时，无需对图进行再次装载，对齐进行反序列化即可；
         对已修改的图需要重新构图。
+        
     2. 使用Pregel计算模型
         >> Pregel在概念模型上遵循BSP模型，整个计算过程由若干顺序执行的超级步（Super Step）组成，系统从一个“超级步”迈向下一个“超级步”，直到达到算法的终止条件;
         Pregel在编程模型上遵循以图节点为中心的模式，在超级步S中，每个图节点可以汇总从超级步S-1中其他节点传递过来的消息，改变图节点自身的状态，并向其他节点发送消息，这些消息经过同步后，会在超级步S+1中被其他节点接收并做出处理;
@@ -92,6 +107,7 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
         vertexProgram:处理接收的消息
         pathFilter:消息传递路径过滤函数
         实现具体算法时，需要实现以上3个抽象方法即可，计算时使用Pregel的run方法执行算法。
+        
      3. 算法包
          >>工程中提供的算法包:com.thoughtworks.graphx.lib，通过实现Pregel扩展算法库;
          目前实现的算法有:
