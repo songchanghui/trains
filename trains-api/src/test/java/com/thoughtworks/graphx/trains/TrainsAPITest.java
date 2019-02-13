@@ -62,7 +62,7 @@ public class TrainsAPITest {
             TrainsAPI trainsAPI = new TrainsImpl();
 
             String[] vertexsIn = {"C", "C"};
-            String number = trainsAPI.getTripsMaxStops(vertexsIn[0], vertexsIn[1], 3);
+            String number = trainsAPI.getTripsLessInStops(vertexsIn[0], vertexsIn[1], 3);
             logger.info("The number of trips starting at C and ending at C with a maximum of 3 stops is " + number);
         } catch (IllegalAccessException e) {
             logger.info(e.getMessage());
@@ -94,7 +94,7 @@ public class TrainsAPITest {
             TrainsAPI trainsAPI = new TrainsImpl();
 
             String[] vertexsIn = {"A", "C"};
-            String number = trainsAPI.getTripsExactlyStops(vertexsIn[0], vertexsIn[1], 4);
+            String number = trainsAPI.getTripsInExactlyStops(vertexsIn[0], vertexsIn[1], 4);
             logger.info("The number of trips starting at A and ending at C with exactly 4 stops is " + number);
         } catch (IllegalAccessException e) {
             logger.info(e.getMessage());
@@ -155,7 +155,7 @@ public class TrainsAPITest {
             TrainsAPI trainsAPI = new TrainsImpl();
 
             String[] vertexsIn = {"C", "C"};
-            String number = trainsAPI.getTripsMaxDistance(vertexsIn[0], vertexsIn[1], 30);
+            String number = trainsAPI.getTripsLessInDistance(vertexsIn[0], vertexsIn[1], 30);
             logger.info("The length of the shortest route (in terms of distance to travel) from A to C is " + number);
         } catch (IllegalAccessException e) {
             logger.info(e.getMessage());

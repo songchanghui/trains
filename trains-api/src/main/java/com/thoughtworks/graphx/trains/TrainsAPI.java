@@ -26,7 +26,7 @@ public interface TrainsAPI {
      * @param maxStops
      * @return
      */
-    String getTripsMaxStops(String startVertex, String endVertex, int maxStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
+    String getTripsLessInStops(String startVertex, String endVertex, int maxStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
 
     /**
      * The number of trips starting at A and ending at C with exactly 4 stops.
@@ -37,7 +37,7 @@ public interface TrainsAPI {
      * @param maxStops
      * @return
      */
-    String getTripsExactlyStops(String startVertex, String endVertex, int maxStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
+    String getTripsInExactlyStops(String startVertex, String endVertex, int maxStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
 
     /**
      * The length of the shortest route (in terms of distance to travel) from A to C.
@@ -57,7 +57,7 @@ public interface TrainsAPI {
      * @param maxDistance
      * @return
      */
-    String getTripsMaxDistance(String startVertex, String endVertex, int maxDistance) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
+    String getTripsLessInDistance(String startVertex, String endVertex, int maxDistance) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
 
 
 }

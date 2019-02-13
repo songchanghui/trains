@@ -1,11 +1,8 @@
-import com.thoughtworks.graphx.Graph;
-import com.thoughtworks.graphx.factory.GraphProxyFactory;
 import com.thoughtworks.graphx.trains.TrainsAPI;
 import com.thoughtworks.graphx.trains.impl.TrainsImpl;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,15 +81,15 @@ public class MainTest {
             //5.The distance of the route A-E-D.
             output.add(trainsAPI.getDistance(input.get(4)));
             //6.The number of trips starting at C and ending at C with a maximum of 3 stops.  In the sample data below, there are two such trips: C-D-C (2 stops). and C-E-B-C (3 stops).
-            output.add(trainsAPI.getTripsMaxStops(input.get(5)[0],input.get(5)[1],Integer.parseInt(input.get(5)[2])));
+            output.add(trainsAPI.getTripsLessInStops(input.get(5)[0],input.get(5)[1],Integer.parseInt(input.get(5)[2])));
             //7.The number of trips starting at A and ending at C with exactly 4 stops.  In the sample data below, there are three such trips: A to C (via B,C,D); A to C (via D,C,D); and A to C (via D,E,B).
-            output.add(trainsAPI.getTripsExactlyStops(input.get(6)[0],input.get(7)[1],Integer.parseInt(input.get(6)[2])));
+            output.add(trainsAPI.getTripsInExactlyStops(input.get(6)[0],input.get(7)[1],Integer.parseInt(input.get(6)[2])));
             //8.The length of the shortest route (in terms of distance to travel) from A to C.
             output.add(trainsAPI.getShortestDistance(input.get(7)[0],input.get(7)[1]));
             //9.The length of the shortest route (in terms of distance to travel) from B to B.
             output.add(trainsAPI.getShortestDistance(input.get(8)[0],input.get(8)[1]));
             //10.The number of different routes from C to C with a distance of less than 30.  In the sample data, the trips are: CDC, CEBC, CEBCDC, CDCEBC, CDEBC, CEBCEBC, CEBCEBCEBC.
-            output.add(trainsAPI.getTripsMaxDistance(input.get(9)[0],input.get(9)[1],Integer.parseInt(input.get(9)[2])));
+            output.add(trainsAPI.getTripsLessInDistance(input.get(9)[0],input.get(9)[1],Integer.parseInt(input.get(9)[2])));
             logger.info(input.toString());
             logger.info(output.toString());
         } catch (IllegalAccessException e) {

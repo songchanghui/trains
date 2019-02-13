@@ -50,7 +50,7 @@ public class TrainsImpl implements TrainsAPI {
      * @param maxStops
      * @return
      */
-    public String getTripsMaxStops(String startVertex, String endVertex, int maxStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
+    public String getTripsLessInStops(String startVertex, String endVertex, int maxStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
         TripsMaxStops tripsMaxStops = new TripsMaxStops(startVertex, endVertex, maxStops);
         tripsMaxStops.setGraph(GraphProxyFactory.getGraph());
         tripsMaxStops.run();
@@ -64,7 +64,7 @@ public class TrainsImpl implements TrainsAPI {
      * @param endVertex
      * @return
      */
-    public String getTripsExactlyStops(String startVertex, String endVertex, int exactlyStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
+    public String getTripsInExactlyStops(String startVertex, String endVertex, int exactlyStops) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
         TripsExactlyStops tripsExactlyStops = new TripsExactlyStops(startVertex, endVertex, exactlyStops);
         tripsExactlyStops.setGraph(GraphProxyFactory.getGraph());
         tripsExactlyStops.run();
@@ -81,7 +81,7 @@ public class TrainsImpl implements TrainsAPI {
      * @param maxDistance
      * @return
      */
-    public String getTripsMaxDistance(String startVertex, String endVertex, int maxDistance) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
+    public String getTripsLessInDistance(String startVertex, String endVertex, int maxDistance) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
         TripsMaxDistance tripsMaxDistance = new TripsMaxDistance(startVertex, endVertex, maxDistance);
         tripsMaxDistance.setGraph(GraphProxyFactory.getGraph());
         tripsMaxDistance.run();
