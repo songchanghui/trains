@@ -36,6 +36,7 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
             
 * 2  TrainsAPI.getTripsLessInStops(String startVertex, String endVertex, int maxStops);
     计算两个地点之间（不超过n站路）的全部路径
+    
     1. The number of trips starting at C and ending at C with a maximum of 3 stops.
        
             TrainsAPI trainsAPI = new TrainsImpl();
@@ -43,12 +44,14 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
              
 * 3 TrainsAPI.getTripsInExactlyStops(String startVertex, String endVertex, int exactlyStops);
     计算两个地点之间（n站路）的全部路径
+    
     1. The number of trips starting at A and ending at C with exactly 4 stops.
     
             TrainsAPI trainsAPI = new TrainsImpl();
             String number = trainsAPI.getTripsInExactlyStops("A", "C", 4);
 * 4 TrainsAPI.getShortestDistance(String startVertex, String endVertex, int maxDistance);
     计算两个地点之间的最短距离（Dijkstra算法）
+    
     1. The length of the shortest route (in terms of distance to travel) from A to C.
     2. The length of the shortest route (in terms of distance to travel) from B to B.
   
@@ -56,6 +59,7 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
             String length = trainsAPI.getShortestDistance("A", "C");
 * 5 TrainsAPI.getTripsLessInDistance(String startVertex, String endVertex, int maxDistance);
     计算两个地点之间（不超过最大距离）的全部路径
+    
       1. The number of different routes from C to C with a distance of less than 30.
       
             TrainsAPI trainsAPI = new TrainsImpl();
