@@ -67,24 +67,22 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
             
 ###Test 测试说明
 ---
-* MainTest
 
+* MainTest
     整体问题测试类:用以测试Trains Goals全部问题
+    
     input: 
     Graph: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7
     List: {"A", "B", "C"}{"A", "D"}{"A", "D", "C"}{"A", "E", "B" , "C" ,"D"{"A", "E", "D"}{"C", "C", "3"}{"A", "C", "4"}"A", "C"}{"B", "B"}{"C", "C" ,"30"})
     output:[9, 5, 13, 22, NO SUCH ROUTE, 2, 3, 9, 9, 7]
     
 * com.thoughtworks.graphx.trains.TrainsAPITest
-
     接口测试包:测试全部接口的的结果
     
 * com.thoughtworks.graphx.trains.GraphLoaderTest
-
     图装载测试类:通过此测试类测试图装载过程
     
 * com.thoughtworks.graphx.util.SerializeUtilTest
-
     图序列化反序列化测试类:通过此类测试Graph的序列化与反序列化
     
 ## 工程说明
