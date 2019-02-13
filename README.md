@@ -60,7 +60,7 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
 * 5 TrainsAPI.getTripsLessInDistance(String startVertex, String endVertex, int maxDistance);
     计算两个地点之间（不超过最大距离）的全部路径
     
-      1. The number of different routes from C to C with a distance of less than 30.
+    1. The number of different routes from C to C with a distance of less than 30.
       
             TrainsAPI trainsAPI = new TrainsImpl();
             String number = trainsAPI.getTripsLessInDistance("C", "C", 30);
