@@ -18,8 +18,10 @@ In fact, even if both of these routes do happen to exist, they are distinct and 
 * The number of different routes from C to C with a distance of less than 30.  In the sample data, the trips are: CDC, CEBC, CEBCDC, CDCEBC, CDEBC, CEBCEBC, CEBCEBCEBC.
 
 ##Getting started 快速使用
-###API 接口说明
+---
 
+###API 接口说明
+---
  接口所在包 com.thoughtworks.graphx.trains
 
 * 1 TrainsAPI.getDistance(String[] vertex).
