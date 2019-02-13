@@ -5,6 +5,7 @@ a route from Kaitaia to Invercargill does not imply the existence of a route fro
 In fact, even if both of these routes do happen to exist, they are distinct and are not necessarily the same distance!
 
 ##Trains Goals 工程目标
+---
 
 * The distance of the route A-B-C.
 * The distance of the route A-D.
