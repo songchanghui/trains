@@ -3,6 +3,7 @@ package com.thoughtworks.graphx.lib;
 import com.thoughtworks.graphx.EdgeTriplet;
 import com.thoughtworks.graphx.Pregel;
 import com.thoughtworks.graphx.Vertex;
+import com.thoughtworks.graphx.util.ParmUtil;
 
 /**
  * Dijkstra 算法
@@ -42,7 +43,7 @@ public class DijkstraShortestPath extends Pregel {
         Long dstAttr = dstVertex.getAttr();
         Long min = Math.min(edgeTriplet.getAttr() + edgeTriplet.getSrcAttr(), dstAttr);
         //目标顶点值为0 则赋值原顶点 属性及边权值
-        if (dstVertex.getAttr() == 0) {
+        if (dstVertex.getAttr() == ParmUtil.ZERO) {
             dstVertex.setAttr(edgeTriplet.getAttr() + edgeTriplet.getSrcAttr());
             dstVertex.setActive(true);
         } else {

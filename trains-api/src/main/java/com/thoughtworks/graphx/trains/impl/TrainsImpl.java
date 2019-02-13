@@ -1,7 +1,5 @@
 package com.thoughtworks.graphx.trains.impl;
 
-import com.thoughtworks.graphx.Edge;
-import com.thoughtworks.graphx.Graph;
 import com.thoughtworks.graphx.factory.GraphProxyFactory;
 import com.thoughtworks.graphx.lib.*;
 import com.thoughtworks.graphx.trains.TrainsAPI;
@@ -27,14 +25,14 @@ public class TrainsImpl implements TrainsAPI {
      * @return
      */
     public String getDistance(String[] vertex) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException {
-        if (vertex.length <= 1) {
-            return "0";
+        if (vertex.length <= ParmUtil.ONE) {
+            return String.valueOf(ParmUtil.ZERO);
         }
         Distance distance = new Distance(vertex);
         distance.setGraph(GraphProxyFactory.getGraph());
         distance.run();
         List<String> paths = distance.getResults();
-        if (paths.size() < 1 || !distance.pathFilter(paths.get(0))) {
+        if (paths.size() < ParmUtil.ONE || !distance.pathFilter(paths.get(0))) {
             return GraphProxyFactory.NO_SUCH_ROUTE;
         }
         String[] ps = paths.get(0).split(GraphProxyFactory.GRAPH_FILE_SPLIT);

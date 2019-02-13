@@ -100,7 +100,7 @@ public class GraphProxyFactory {
                 (proxy, method, args) -> {
                     handler.before(args);
                     Object object = method.invoke(c.newInstance(), args);
-                    Object[] argsAfter = ParmUtil.addElement(args, object, 0);
+                    Object[] argsAfter = ParmUtil.addElement(args, object, ParmUtil.ZERO);
                     handler.after(argsAfter);
                     return object;
                 });

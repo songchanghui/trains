@@ -3,6 +3,7 @@ package com.thoughtworks.graphx.lib;
 import com.thoughtworks.graphx.EdgeTriplet;
 import com.thoughtworks.graphx.Pregel;
 import com.thoughtworks.graphx.Vertex;
+import com.thoughtworks.graphx.util.ParmUtil;
 
 
 /**
@@ -36,7 +37,7 @@ public class TripsMaxDistance extends Pregel {
         Long dstAttr = dstVertex.getAttr();
         Long min = Math.min(edgeTriplet.getAttr() + edgeTriplet.getSrcAttr(), dstAttr);
         //目标顶点值为0
-        if (dstVertex.getAttr() == 0) {
+        if (dstVertex.getAttr() == ParmUtil.ZERO) {
             dstVertex.setAttr(edgeTriplet.getAttr() + edgeTriplet.getSrcAttr());
         } else {
             if (min < dstAttr) {

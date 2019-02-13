@@ -91,7 +91,7 @@ public abstract class Pregel {
             paths = paths.stream()
                     .map(s -> buildPath(s, vertexId, edgeTriplets))
                     .flatMap(List::stream)
-                    .filter(s1 -> s1.split(GraphProxyFactory.GRAPH_FILE_SPLIT).length < getMaxIterations() + 3)
+                    .filter(s1 -> s1.split(GraphProxyFactory.GRAPH_FILE_SPLIT).length < getMaxIterations() + ParmUtil.THREE)
                     .collect(Collectors.toList());
         }
         //结果集添加符合条件的path
@@ -136,8 +136,8 @@ public abstract class Pregel {
      * pregel 运行
      */
     public void run() {
-        curIterations = 0;
-        if (maxIterations == 0) {
+        curIterations = ParmUtil.ZERO;
+        if (maxIterations == ParmUtil.ZERO) {
             maxIterations = DEFAULT_MAXITERATIONS;
         }
         logger.info("初始化消息体");
@@ -152,7 +152,7 @@ public abstract class Pregel {
             List<Vertex> activeVertex = graph.getVertices().stream()
                     .filter(vertex -> vertex.isActive()).collect(Collectors.toList());
             //当前无活跃顶点  或 当前全部路径已超过最大距离
-            if (activeVertex.size() == 0 || paths.size() == 0) {
+            if (activeVertex.size() == ParmUtil.ZERO || paths.size() == ParmUtil.ZERO) {
                 break;
             }
             logger.info("源顶点发送消息");
@@ -171,7 +171,7 @@ public abstract class Pregel {
     public long getDistance(String path) {
         String[] paths = path.split(GraphProxyFactory.GRAPH_FILE_SPLIT);
         Map<String, EdgeTriplet> edgeTripletsMap = getGraph().getEdgeTripletMap();
-        long distance = 0L;
+        long distance = ParmUtil.ZERO;
         for (int i = 0; i < paths.length - 1; i++) {
             distance += edgeTripletsMap.get(paths[i] + "_" + paths[i + 1]).getAttr();
         }
