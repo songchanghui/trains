@@ -44,7 +44,6 @@ public class MainTest {
      */
     @Test
     public void mtest(){
-        logger.info("动态代理工厂->创建GraphLoader,切面构建Graph");
         List<String[]> input = new ArrayList<>();
         //1.The distance of the route A-B-C.
         input.add(new String[]{"A", "B", "C"});
