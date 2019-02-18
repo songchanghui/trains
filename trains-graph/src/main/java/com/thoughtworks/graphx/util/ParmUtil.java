@@ -9,6 +9,14 @@ public class ParmUtil {
     public static final int ONE = 1;
     public static final int TWO = 2;
     public static final int THREE = 3;
+
+    /**
+     * 往数组指定位置添加 element
+     * @param objects
+     * @param element
+     * @param index
+     * @return
+     */
     public static Object[] addElement(Object[] objects, Object element, int index) {
         int length = objects.length;
         Object destination[] = new Object[length + 1];
