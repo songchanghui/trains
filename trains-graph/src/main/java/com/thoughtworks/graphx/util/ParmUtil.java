@@ -8,7 +8,7 @@ public class ParmUtil {
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int TWO = 2;
-    public static final int THREE = 2;
+    public static final int THREE = 3;
     public static Object[] addElement(Object[] objects, Object element, int index) {
         int length = objects.length;
         Object destination[] = new Object[length + 1];
