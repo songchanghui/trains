@@ -98,10 +98,13 @@ public class GraphProxyFactory {
                 c.getClassLoader(),
                 c.getInterfaces(),
                 (proxy, method, args) -> {
-                    handler.before(args);
+                    boolean isLoadFile = method.getName().equals("loadFile");
+                    if(isLoadFile) handler.before(args);
                     Object object = method.invoke(c.newInstance(), args);
-                    Object[] argsAfter = ParmUtil.addElement(args, object, ParmUtil.ZERO);
-                    handler.after(argsAfter);
+                    if(isLoadFile) {
+                        Object[] argsAfter = ParmUtil.addElement(args, object, ParmUtil.ZERO);
+                        handler.after(argsAfter);
+                    }
                     return object;
                 });
         return graphLoader;
