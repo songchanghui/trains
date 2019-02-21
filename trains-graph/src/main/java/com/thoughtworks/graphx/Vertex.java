@@ -19,6 +19,12 @@ public class Vertex implements Serializable {
         this.attr = 0L;
     }
 
+    public Vertex(String id, String name, Long attr) {
+        this.id = id;
+        this.name = name;
+        this.attr = attr;
+    }
+
     public String getId() {
         return id;
     }
