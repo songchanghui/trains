@@ -98,7 +98,7 @@ public class GraphProxyFactory {
                 c.getClassLoader(),
                 c.getInterfaces(),
                 (proxy, method, args) -> {
-                    boolean isLoadFile = method.getName().equals("loadFile");
+                    boolean isLoadFile = "loadFile".equals(method.getName());
                     if(isLoadFile) handler.before(args);
                     Object object = method.invoke(c.newInstance(), args);
                     if(isLoadFile) {

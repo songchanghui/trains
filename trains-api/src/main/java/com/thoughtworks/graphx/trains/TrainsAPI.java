@@ -2,6 +2,7 @@ package com.thoughtworks.graphx.trains;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * 业务接口
@@ -59,5 +60,10 @@ public interface TrainsAPI {
      */
     String getTripsLessInDistance(String startVertex, String endVertex, int maxDistance) throws ClassNotFoundException, URISyntaxException, InstantiationException, IllegalAccessException, IOException;
 
-
+    /**
+     *
+     * @param towns
+     * @return
+     */
+    int getDuration(List<String> towns) throws Exception;
 }

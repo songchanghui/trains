@@ -18,11 +18,22 @@ public class ConfigPropertiesUtil {
             e.printStackTrace();
         }
     }
-    //根据key获取值
+
+    /**
+     * 根据key获取值
+     * @param key
+     * @return
+     */
     public static  String get(String key){
         return properties.getProperty(key).trim();
     }
-    //根据key获取值，值为空则返回defaultValue
+
+    /**
+     * 根据key获取值，值为空则返回defaultValue
+     * @param key
+     * @param defaultValue
+     * @return
+     */
     public static  String get(String key,String defaultValue){
         return properties.getProperty(key, defaultValue);
     }

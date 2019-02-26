@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by songchanghui on 2019/2/12.
@@ -47,40 +51,53 @@ public class TrainsAPITest {
             logger.info(e.getMessage());
             e.printStackTrace();
         }
-
-
     }
+
+
 
     /**
      * The number of trips starting at C and ending at C with a maximum of 3 stops.
      * In the sample data below, there are two such trips: C-D-C (2 stops). and C-E-B-C (3 stops).
      */
     @Test
-    public void getTripsMaxStops() {
-        try {
-            logger.info("创建TrainsAPI 实例");
+    public void getTripsMaxStops() throws Exception {
             TrainsAPI trainsAPI = new TrainsImpl();
 
             String[] vertexsIn = {"C", "C"};
             String number = trainsAPI.getTripsLessInStops(vertexsIn[0], vertexsIn[1], 3);
-            logger.info("The number of trips starting at C and ending at C with a maximum of 3 stops is " + number);
-        } catch (IllegalAccessException e) {
-            logger.info(e.getMessage());
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            logger.info(e.getMessage());
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            logger.info(e.getMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            logger.info(e.getMessage());
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            logger.info(e.getMessage());
-            e.printStackTrace();
-        }
 
+            assertEquals("2",number);
+    }
+
+    @Test
+    public void should_get_duration_among_A_B_C() throws Exception {
+        List<String> towns =  new ArrayList<>();
+        towns.add("A");
+        towns.add("B");
+        towns.add("C");
+        TrainsImpl trains = new TrainsImpl();
+        int duration =  trains.getDuration(towns);
+        assertEquals(11,duration);
+    }
+    @Test
+    public void should_get_duration_among_A_d() throws Exception {
+        List<String> towns =  new ArrayList<>();
+        towns.add("A");
+        towns.add("D");
+        TrainsImpl trains = new TrainsImpl();
+        int duration =  trains.getDuration(towns);
+        assertEquals(5,duration);
+    }
+    @Test
+    public void should_get_duration_among_A_B_C_D() throws Exception {
+        List<String> towns =  new ArrayList<>();
+        towns.add("A");
+        towns.add("B");
+        towns.add("C");
+        towns.add("D");
+        TrainsImpl trains = new TrainsImpl();
+        int duration =  trains.getDuration(towns);
+        assertEquals(15,duration);
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.thoughtworks.graphx.trains.impl;
 
+import com.thoughtworks.graphx.Graph;
+import com.thoughtworks.graphx.Pregel;
 import com.thoughtworks.graphx.factory.GraphProxyFactory;
 import com.thoughtworks.graphx.lib.*;
 import com.thoughtworks.graphx.trains.TrainsAPI;
@@ -86,6 +88,18 @@ public class TrainsImpl implements TrainsAPI {
         List<String> paths = tripsMaxDistance.getResults();
         paths = paths.stream().distinct().collect(Collectors.toList());
         return String.valueOf(paths.size());
+    }
+
+    @Override
+    public int getDuration(List<String> towns) throws  Exception {
+        Graph graph = GraphProxyFactory.getGraph();
+        graph.updateVertexs(2);
+        graph.updateEdges(1);
+        Pregel duration =  new TrainsDuration(towns);
+        duration.setGraph(graph);
+        duration.run();
+        String path = duration.getResults().get(0);
+        return (int) graph.getDuration(path);
     }
 
     /**

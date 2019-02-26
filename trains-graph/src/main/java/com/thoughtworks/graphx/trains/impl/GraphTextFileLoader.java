@@ -27,6 +27,7 @@ import java.util.stream.Stream;
  */
 public class GraphTextFileLoader implements GraphLoader {
     //装载图信息，此方法被代理 用于构建图信息
+    @Override
     public Graph loadFile(String file_path, String regex, int limit) throws IOException, GraphException, URISyntaxException {
         Path path = Paths.get(ClassLoader.getSystemResource(file_path).toURI());
         //读取文件

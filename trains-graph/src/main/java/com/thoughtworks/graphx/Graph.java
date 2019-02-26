@@ -1,5 +1,8 @@
 package com.thoughtworks.graphx;
 
+import com.thoughtworks.graphx.factory.GraphProxyFactory;
+import com.thoughtworks.graphx.util.ParmUtil;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,13 @@ public class Graph implements Serializable {
         this.vertices = vertices;
     }
 
+    public void updateEdges(int travelledTakes){
+        this.edges.forEach(edge -> edge.setAttr(Long.valueOf(travelledTakes)));
+    }
+
+    public void updateVertexs(int stopsTime){
+        this.vertices.forEach(vertex -> vertex.setAttr(Long.valueOf(stopsTime)));
+    }
     public List<Edge> getEdges() {
         return edges;
     }
@@ -68,5 +78,25 @@ public class Graph implements Serializable {
 
     public void setEdgeTripletMap(Map<String, EdgeTriplet> edgeTripletMap) {
         this.edgeTripletMap = edgeTripletMap;
+    }
+
+
+
+    /**
+     * 获取path的
+     *
+     * @return
+     */
+    public long getDuration(String path) {
+        String[] paths = path.split(GraphProxyFactory.GRAPH_FILE_SPLIT);
+        Map<String, EdgeTriplet> edgeTripletsMap = getEdgeTripletMap();
+        long duration = ParmUtil.ZERO;
+        for (int i = 0; i < paths.length - 1; i++) {
+            duration += edgeTripletsMap.get(paths[i] + "_" + paths[i + 1]).getAttr();
+            if(i< paths.length - 2){
+                duration += getVertexMap().get(paths[i + 1]).getAttr();
+            }
+        }
+        return duration;
     }
 }

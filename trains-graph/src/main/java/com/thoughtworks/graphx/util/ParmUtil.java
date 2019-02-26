@@ -1,5 +1,7 @@
 package com.thoughtworks.graphx.util;
 
+import com.thoughtworks.graphx.Graph;
+
 /**
  * 参数处理工具类
  * Created by songchanghui on 2019/2/11.
